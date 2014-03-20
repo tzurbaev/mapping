@@ -1,0 +1,32 @@
+{
+	"name": "mapping",
+	"version": "0.0.0",
+	"description": "A safe, sensible dictionary implementation.",
+	"main": "lib/mapping.js",
+	"scripts": {
+		"test": "mocha --compilers coffee:coffee-script/register spec"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/macaullyjamesmuir/mapping.git"
+	},
+	"keywords": [
+		"mapping",
+		"map",
+		"dictionary"
+	],
+	"dependencies": {
+	},
+	"devDependencies": {
+		"mocha": "1.18.x",
+		"grunt": "0.4.x",
+		"grunt-cli": "0.1.x",
+		"grunt-contrib-coffee": "0.10.x"
+	},
+	"author": "Macaully James Muir",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/macaullyjamesmuir/mapping/issues"
+	},
+	"homepage": "https://github.com/macaullyjamesmuir/mapping"
+}
