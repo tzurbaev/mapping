@@ -53,6 +53,12 @@ Use the `new` keyword to make your mappings:
 +	hasValue(_value_)
 
 	Returns true if the given value exists, false otherwise.
+	
++	forEach(_fn_)
+
+	Calls _fn_ for each of the key/value pairs in the mapping; _fn_ is called as
+	`fn(key, value)` for each pair. There is no way to break out of this (unless
+	you're Michael Scofield, or throw an exception).
 
 ## Wait, I can't do this with POJOs?
 You can, but you don't want to. Here are a few reasons:
