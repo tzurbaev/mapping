@@ -7,4 +7,6 @@ class mapping
 	set:    (key, value) -> store["~#{key}"] = value
 	delete: (key)        -> delete store["~#{key}"]
 	
+	size: -> Object.keys(store).length
+	
 module.exports = mapping

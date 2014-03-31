@@ -29,6 +29,10 @@ Use the `new` keyword to make your mappings:
 
 	Delete the specified key from the mapping. Does nothing if the key isn't present.
 	Returns `undefined`.
+	
++	size()
+
+	Returns the number of keys in the mapping.
 
 ## Wait, I can't do this with POJOs?
 You can, but you don't want to. Here are a few reasons:
