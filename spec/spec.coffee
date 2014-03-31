@@ -8,10 +8,12 @@ describe "require 'mapping'", ->
 describe "the API", ->
 	it "has get(), set() and delete() methods that work as you would expect", ->
 		m = new mapping
+		n = new mapping
 		((m.get "foo")?).should.be.false
 		
 		m.set "foo", "bar"
 		(m.get "foo").should.equal "bar"
+		((n.get "foo")?).should.be.false
 		
 		m.delete "foo"
 		((m.get "foo")?).should.be.false

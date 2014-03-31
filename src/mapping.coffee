@@ -1,4 +1,4 @@
-class mapping
+module.exports = ->
 	# Our internal key/value store
 	store = Object.create null
 	
@@ -8,5 +8,3 @@ class mapping
 	delete: (key)        -> delete store["~#{key}"]
 	
 	size: -> Object.keys(store).length
-	
-module.exports = mapping
