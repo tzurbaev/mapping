@@ -5,7 +5,7 @@ describe "require 'mapping'", ->
 	it "should return a function", ->
 		(typeof mapping).should.equal "function"
 
-describe "the basic mapping functionality", ->
+describe "the API", ->
 	it "has get(), set() and delete() methods that work as you would expect", ->
 		m = new mapping
 		((m.get "foo")?).should.be.false
@@ -15,6 +15,16 @@ describe "the basic mapping functionality", ->
 		
 		m.delete "foo"
 		((m.get "foo")?).should.be.false
+		
+	it "has a size() method that returns the number of keys in the mapping", ->
+		m = new mapping
+		m.size().should.equal(0)
+	
+		m.set "foo", "bar"
+		m.size().should.equal(1)
+		
+		m.delete "foo"
+		m.size().should.equal(0)
 	
 describe "the extra security", ->
 	it "should not let us change the prototype of the internal keystore", ->
