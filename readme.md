@@ -36,6 +36,16 @@ Use the `new` keyword to make your mappings:
 
 	Returns the number of keys in the mapping.
 	
++	keys()
+
+	Returns the keys of the mapping in an array. An empty array is returned if no
+	keys have been set.
+	
++	values()
+
+	Returns the values of the mapping in an array. An empty array is returned if no
+	values have been set.
+
 +	hasKey(_key_)
 
 	Returns true if the given key exists, false otherwise.
