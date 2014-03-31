@@ -5,6 +5,8 @@ the key/value pairs are user generated. Don't do it.
 ## Installation
 	npm install mapping
 
+If you like nyan cats and testing (who doesn't?), `npm test` will run the test suite.
+
 ## Usage
 Put this with your `require`s:
 
