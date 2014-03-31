@@ -13,4 +13,5 @@ module.exports = ->
 	hasValue: (value) -> value in @values()	
 	size:             -> @keys().length
 	
-	forEach: (f) -> f(key[1..], value) for key, value of store
+	map: (f) -> f(key[1..], value) for key, value of store
+	
