@@ -8,3 +8,5 @@ module.exports = ->
 	delete: (key)        -> delete store["~#{key}"]
 	
 	size: -> Object.keys(store).length
+	
+	hasKey: (key) -> Object.keys(store).indexOf("~#{key}") isnt -1

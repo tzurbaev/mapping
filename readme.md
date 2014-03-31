@@ -35,6 +35,10 @@ Use the `new` keyword to make your mappings:
 +	size()
 
 	Returns the number of keys in the mapping.
+	
++	hasKey(_key_)
+
+	Returns true if the given key exists, false otherwise.
 
 ## Wait, I can't do this with POJOs?
 You can, but you don't want to. Here are a few reasons:
