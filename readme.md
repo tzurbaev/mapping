@@ -3,7 +3,7 @@ Using vanilla javascript objects as mappings is a bad idea, especially when
 the key/value pairs are user generated. Don't do it.
 
 ## Installation
-Not quite yet...
+	npm install mapping
 
 ## Usage
 Put this with your `require`s:
