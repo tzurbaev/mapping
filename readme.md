@@ -39,6 +39,10 @@ Use the `new` keyword to make your mappings:
 +	hasKey(_key_)
 
 	Returns true if the given key exists, false otherwise.
+	
++	hasValue(_value_)
+
+	Returns true if the given value exists, false otherwise.
 
 ## Wait, I can't do this with POJOs?
 You can, but you don't want to. Here are a few reasons:

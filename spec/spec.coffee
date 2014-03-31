@@ -35,6 +35,14 @@ describe "the API", ->
 	
 		m.set "foo", "bar"
 		m.hasKey("foo").should.be.true
+		
+	it "has a hasValue() method that tells us if a given value is present", ->
+		m = new mapping
+		
+		m.hasValue("foo").should.be.false
+	
+		m.set "foo", "bar"
+		m.hasValue("bar").should.be.true
 	
 describe "the extra security", ->
 	it "should not let us change the prototype of the internal keystore", ->
