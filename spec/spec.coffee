@@ -20,13 +20,39 @@ describe "the API", ->
 		
 	it "has a size() method that returns the number of keys in the mapping", ->
 		m = new mapping
-		m.size().should.equal(0)
+		m.size().should.equal 0
 	
 		m.set "foo", "bar"
-		m.size().should.equal(1)
+		m.size().should.equal 1
 		
 		m.delete "foo"
-		m.size().should.equal(0)
+		m.size().should.equal 0
+		
+	it "has a keys() method that returns the keys of the mapping", ->
+		m = new mapping
+		m.keys().length.should.equal 0
+	
+		m.set "foo", 123
+		m.set "bar", 456
+		
+		m.keys().length.should.equal 2
+		
+		# Note that order shouldn't matter here
+		m.keys().indexOf("foo").should.not.equal -1
+		m.keys().indexOf("bar").should.not.equal -1
+		
+	it "has a values() method that returns the values of the mapping", ->
+		m = new mapping
+		m.values().length.should.equal 0
+	
+		m.set "foo", 123
+		m.set "bar", 456
+		
+		m.values().length.should.equal 2
+		
+		# Note that order shouldn't matter here
+		m.values().indexOf(123).should.not.equal -1
+		m.values().indexOf(456).should.not.equal -1
 		
 	it "has a hasKey() method that tells us if a given key is present", ->
 		m = new mapping

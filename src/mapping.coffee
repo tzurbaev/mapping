@@ -9,8 +9,8 @@ module.exports = ->
 	
 	size: -> Object.keys(store).length
 	
-	hasKey:   (key)   -> Object.keys(store).indexOf("~#{key}") isnt -1
-	hasValue: (value) ->
-		for key, val of store
-			return yes if val is value 
-		return false
+	keys:   -> key[1..] for key, value of store
+	values: -> value    for key, value of store
+	
+	hasKey:   (key)   -> key in @keys()
+	hasValue: (value) -> value in @values()
