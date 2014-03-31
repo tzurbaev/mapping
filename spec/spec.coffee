@@ -69,6 +69,15 @@ describe "the API", ->
 	
 		m.set "foo", "bar"
 		m.hasValue("bar").should.be.true
+		
+	it "has a forEach() method that lets us do something for each key/value pair", ->
+		m = new mapping
+		m.set "a", "b"
+		m.set "c", "d"
+		
+		result = ""
+		m.forEach (key, value) -> result += key + value
+		result.should.equal "abcd"
 	
 describe "the extra security", ->
 	it "should not let us change the prototype of the internal keystore", ->
