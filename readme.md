@@ -31,6 +31,10 @@ Use the `new` keyword to make your mappings:
 
 	Delete the specified key from the mapping. Does nothing if the key isn't present.
 	Returns `undefined`.
+
++	empty(_key_)
+
+	Empty the mapping, i.e. remove all key/value pairs.
 	
 +	size()
 
