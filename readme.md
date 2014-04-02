@@ -63,6 +63,12 @@ Use the `new` keyword to make your mappings:
 	Maps each of the key/value pairs in the mapping onto an array of elements
 	defined by fn. _fn_ is called as `fn(key, value)` for each pair. There is no
 	way to break out of this (not even if you're Michael Scofield).
+	
++	filter(_fn_)
+
+	For each of the key/value pairs in the mapping, `fn(key, value)` is called.
+	All key/value pairs for which fn returns _true_ are added to a new mapping,
+	which is returned. The original mapping is never modified.
 
 ## Wait, I can't do this with POJOs?
 You can, but you don't want to. Here are a few reasons:

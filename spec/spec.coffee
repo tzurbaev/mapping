@@ -89,6 +89,32 @@ describe "the API", ->
 		result.indexOf("ab").should.not.equal -1
 		result.indexOf("cd").should.not.equal -1
 		result.indexOf("ef").should.equal -1
+		
+	it "has a filter() method returns a subset of this mapping as a new mapping", ->
+		m = new mapping
+		m.set "a", 1
+		m.set "b", 2
+		m.set "c", 3
+		
+		filtered = m.filter (key, value) -> key == "a"
+		filtered.get("a").should.equal 1
+		(filtered.get("b")?).should.be.false
+		(filtered.get("c")?).should.be.false
+		
+		filtered = m.filter (key, value) -> value == 3
+		(filtered.get("a")?).should.be.false
+		(filtered.get("b")?).should.be.false
+		filtered.get("c").should.equal 3
+		
+		filtered = m.filter (key, value) -> no
+		(filtered.get("a")?).should.be.false
+		(filtered.get("b")?).should.be.false
+		(filtered.get("c")?).should.be.false
+		
+		# The original mapping shouldn't be modified
+		m.get("a").should.equal 1
+		m.get("b").should.equal 2
+		m.get("c").should.equal 3
 	
 describe "the extra security", ->
 	it "should not let us change the prototype of the internal keystore", ->
