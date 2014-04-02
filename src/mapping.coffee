@@ -6,6 +6,7 @@ module.exports = ->
 	get:    (key)        -> store["~#{key}"]
 	set:    (key, value) -> store["~#{key}"] = value
 	delete: (key)        -> delete store["~#{key}"]
+	empty:               -> @delete key for key in @keys()
 	
 	keys:             -> key[1..] for key, value of store
 	values:           -> value    for key, value of store

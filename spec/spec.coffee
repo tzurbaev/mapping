@@ -17,6 +17,16 @@ describe "the API", ->
 		
 		m.delete "foo"
 		((m.get "foo")?).should.be.false
+	
+	it "has an empty() method that empties the mapping", ->
+		m = new mapping
+		m.set "foo", 123
+		m.set "bar", 456
+			
+		m.size().should.equal 2
+		
+		do m.empty
+		m.size().should.equal 0
 		
 	it "has a size() method that returns the number of keys in the mapping", ->
 		m = new mapping
