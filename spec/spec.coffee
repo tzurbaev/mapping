@@ -126,7 +126,18 @@ describe "the API", ->
 		(m.some (key, value) -> key is "a").should.be.true
 		(m.some (key, value) -> key is "d").should.be.false
 		(m.some (key, value) -> value is 1).should.be.true
+	
+	it "has an all() method, that tells uf is a given condition
+	    is satisfied for all key/value pairs in the mapping", ->
+		m = new mapping
+		m.set "a", 1
+		m.set "b", 2
+		m.set "c", 1
 		
+		(m.all (key, value) -> key.length is 1).should.be.true
+		(m.all (key, value) -> value < 10).should.be.true
+		(m.all (key, value) -> value is 2).should.be.false
+		(m.all (key, value) -> value is 1).should.be.false
 	
 describe "the extra security", ->
 	it "should not let us change the prototype of the internal keystore", ->
