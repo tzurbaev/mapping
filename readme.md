@@ -75,6 +75,11 @@ Use the `new` keyword to make your mappings:
 	Returns true if `fn(key, value)` returns true for at least one of the
 	key/value pairs in the mapping. Returns false otherwise.
 	
++	one(_fn_)
+
+	If `fn(key, value)` returns true for exactly one of the key/value pairs in
+	the mapping, that key is returned. Returns false otherwise.
+	
 +	all(_fn_)
 
 	Returns true if `fn(key, value)` returns true for all the key/value pairs

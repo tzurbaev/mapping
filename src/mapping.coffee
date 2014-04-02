@@ -27,7 +27,13 @@ mapping = ->
 			return yes if f(key[1..], value) 
 		return no
 	
+	one: (f) ->
+		filtered = @filter(f)
+		return no if filtered.size() isnt 1
+		return filtered.keys()[0]
+	
 	all: (f) -> @filter(f).size() is @size()
-			
+	
+		
 module.exports = mapping
 	
