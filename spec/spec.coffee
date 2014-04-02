@@ -116,6 +116,18 @@ describe "the API", ->
 		m.get("b").should.equal 2
 		m.get("c").should.equal 3
 	
+	it "has a some() method, that tells uf is a given condition
+	    is satisfied for some key/value pair in the mapping", ->
+		m = new mapping
+		m.set "a", 1
+		m.set "b", 2
+		m.set "c", 1
+		
+		(m.some (key, value) -> key is "a").should.be.true
+		(m.some (key, value) -> key is "d").should.be.false
+		(m.some (key, value) -> value is 1).should.be.true
+		
+	
 describe "the extra security", ->
 	it "should not let us change the prototype of the internal keystore", ->
 		m = new mapping

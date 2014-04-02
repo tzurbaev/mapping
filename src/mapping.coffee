@@ -20,6 +20,10 @@ mapping = ->
 		for key, value of store
 			results.set key[1..], value if f(key[1..], value)
 		return results
+	some: (f) ->
+		for key, value of store
+			return yes if f(key[1..], value) 
+		return no
 			
 module.exports = mapping
 	
