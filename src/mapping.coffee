@@ -1,4 +1,4 @@
-module.exports = ->
+mapping = ->
 	# Our internal key/value store
 	store = Object.create null
 	
@@ -14,5 +14,12 @@ module.exports = ->
 	hasValue: (value) -> value in @values()	
 	size:             -> @keys().length
 	
-	map: (f) -> f(key[1..], value) for key, value of store
+	map:    (f) -> f key[1..], value for key, value of store
+	filter: (f) ->
+		results = new mapping
+		for key, value of store
+			results.set key[1..], value if f(key[1..], value)
+		return results
+			
+module.exports = mapping
 	
