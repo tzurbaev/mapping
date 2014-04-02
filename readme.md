@@ -73,7 +73,12 @@ Use the `new` keyword to make your mappings:
 +	some(_fn_)
 
 	Returns true if `fn(key, value)` returns true for at least one of the
-	key/value pairs in the mapping. Returns false otherwise. 
+	key/value pairs in the mapping. Returns false otherwise.
+	
++	all(_fn_)
+
+	Returns true if `fn(key, value)` returns true for all the key/value pairs
+	in the mapping. Returns false otherwise.
 
 ## Wait, I can't do this with POJOs?
 You can, but you don't want to. Here are a few reasons:
