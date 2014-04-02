@@ -31,6 +31,10 @@ Use the `new` keyword to make your mappings:
 
 	Delete the specified key from the mapping. Does nothing if the key isn't present.
 	Returns `undefined`.
+
++	empty(_key_)
+
+	Empty the mapping, i.e. remove all key/value pairs.
 	
 +	size()
 
@@ -59,6 +63,27 @@ Use the `new` keyword to make your mappings:
 	Maps each of the key/value pairs in the mapping onto an array of elements
 	defined by fn. _fn_ is called as `fn(key, value)` for each pair. There is no
 	way to break out of this (not even if you're Michael Scofield).
+	
++	filter(_fn_)
+
+	For each of the key/value pairs in the mapping, `fn(key, value)` is called.
+	All key/value pairs for which fn returns _true_ are added to a new mapping,
+	which is returned. The original mapping is never modified.
+	
++	some(_fn_)
+
+	Returns true if `fn(key, value)` returns true for at least one of the
+	key/value pairs in the mapping. Returns false otherwise.
+	
++	one(_fn_)
+
+	If `fn(key, value)` returns true for exactly one of the key/value pairs in
+	the mapping, that key is returned. Returns false otherwise.
+	
++	all(_fn_)
+
+	Returns true if `fn(key, value)` returns true for all the key/value pairs
+	in the mapping. Returns false otherwise.
 
 ## Wait, I can't do this with POJOs?
 You can, but you don't want to. Here are a few reasons:

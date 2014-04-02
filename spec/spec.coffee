@@ -17,6 +17,16 @@ describe "the API", ->
 		
 		m.delete "foo"
 		((m.get "foo")?).should.be.false
+	
+	it "has an empty() method that empties the mapping", ->
+		m = new mapping
+		m.set "foo", 123
+		m.set "bar", 456
+			
+		m.size().should.equal 2
+		
+		do m.empty
+		m.size().should.equal 0
 		
 	it "has a size() method that returns the number of keys in the mapping", ->
 		m = new mapping
@@ -79,6 +89,68 @@ describe "the API", ->
 		result.indexOf("ab").should.not.equal -1
 		result.indexOf("cd").should.not.equal -1
 		result.indexOf("ef").should.equal -1
+		
+	it "has a filter() method returns a subset of this mapping as a new mapping", ->
+		m = new mapping
+		m.set "a", 1
+		m.set "b", 2
+		m.set "c", 3
+		
+		filtered = m.filter (key, value) -> key == "a"
+		filtered.get("a").should.equal 1
+		(filtered.get("b")?).should.be.false
+		(filtered.get("c")?).should.be.false
+		
+		filtered = m.filter (key, value) -> value == 3
+		(filtered.get("a")?).should.be.false
+		(filtered.get("b")?).should.be.false
+		filtered.get("c").should.equal 3
+		
+		filtered = m.filter (key, value) -> no
+		(filtered.get("a")?).should.be.false
+		(filtered.get("b")?).should.be.false
+		(filtered.get("c")?).should.be.false
+		
+		# The original mapping shouldn't be modified
+		m.get("a").should.equal 1
+		m.get("b").should.equal 2
+		m.get("c").should.equal 3
+	
+	it "has a some() method, that tells uf is a given condition
+	    is satisfied for some key/value pair in the mapping", ->
+		m = new mapping
+		m.set "a", 1
+		m.set "b", 2
+		m.set "c", 1
+		
+		(m.some (key, value) -> key is "a").should.be.true
+		(m.some (key, value) -> key is "d").should.be.false
+		(m.some (key, value) -> value is 1).should.be.true
+		
+	it "has a one() method, that checks if exactly one key/value
+	    pair satisfies some condition. If that is true, the key
+		of the matching element is returned. If not, the function
+		returns false", ->
+		m = new mapping
+		m.set "a", 1
+		m.set "b", 2
+		m.set "c", 1
+		
+		(m.one (key, value) -> key is "a").should.equal "a"
+		(m.one (key, value) -> value is 2).should.equal "b"
+		(m.one (key, value) -> value is 1).should.be.false
+	
+	it "has an all() method, that tells uf is a given condition
+	    is satisfied for all key/value pairs in the mapping", ->
+		m = new mapping
+		m.set "a", 1
+		m.set "b", 2
+		m.set "c", 1
+		
+		(m.all (key, value) -> key.length is 1).should.be.true
+		(m.all (key, value) -> value < 10).should.be.true
+		(m.all (key, value) -> value is 2).should.be.false
+		(m.all (key, value) -> value is 1).should.be.false
 	
 describe "the extra security", ->
 	it "should not let us change the prototype of the internal keystore", ->
